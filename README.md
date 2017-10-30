@@ -70,6 +70,7 @@ which make up a sizable chunk of the real estate firm's business.
   * water_frontage_length
   * easements
   * water_body_type
+  
 ![Top missing values](./images/top_missing.png)
 
 * Thus, Dataframe is first munged using `df = df.drop(['common_land_acres','water_frontage_length','easements','water_body_type'],axis=1)`
