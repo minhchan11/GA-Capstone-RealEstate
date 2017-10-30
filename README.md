@@ -4,7 +4,7 @@
 
 A local Vermont/New Hampshire real estate firm is looking into modeling closed prices for houses. This dataset contains features of houses in three towns in Vermont, which make up a sizable chunk of the real estate firm's business.
 
-## Data science question:
+## Hypothesis
 
 Is it possible to predict a closing price of a property in Vermont/New Hampshire with
 
@@ -70,7 +70,7 @@ which make up a sizable chunk of the real estate firm's business.
   * water_frontage_length
   * easements
   * water_body_type
-  
+
 ![Top missing values](./images/top_missing.png)
 
 * Thus, Dataframe is first munged using `df = df.drop(['common_land_acres','water_frontage_length','easements','water_body_type'],axis=1)`
@@ -80,11 +80,11 @@ which make up a sizable chunk of the real estate firm's business.
     df[col] = df[col].fillna(df[col].mean())`
 
 * For column that have only a few missing values, I use my best judgement to fill in values that could potentially help to create a reasonable values and will not affect the distribution. Mapping to a dictionary was used in some cases
- * `df['basement'] = df['basement'].fillna('No')`
- * `df['flood_zone']= df['flood_zone'].map({'No':0,'Yes':1,'Unknown':1})`
- * `df['current_use']= df['current_use'].map({'No':0,'Yes':1,'Unknown':1})`
- * `df['basement']= df['basement'].map({'No':0,'Yes':1})`
- * `df['garage']= df['garage'].map({'No':0,'Yes':1})`
+   * `df['basement'] = df['basement'].fillna('No')`
+   * `df['flood_zone']= df['flood_zone'].map({'No':0,'Yes':1,'Unknown':1})`
+   * `df['current_use']= df['current_use'].map({'No':0,'Yes':1,'Unknown':1})`
+   * `df['basement']= df['basement'].map({'No':0,'Yes':1})`
+   * `df['garage']= df['garage'].map({'No':0,'Yes':1})`
 
 * At this stage, some dummies column values are generated as part of exploratory feature engineering
   * `city = pd.get_dummies(df.city,prefix='city_',drop_first=True)`
@@ -136,12 +136,12 @@ df=pd.DataFrame(lm.coef_,X.columns,columns=['Coefficient'])`
 ![Coefficient Matrix](./images/coefficient.png)
 
 * The accuracy of the model is then cross-evaluated with the null accuracy of the model itself
- * `y_null = np.zeros_like(y_test, dtype=float)
+  * `y_null = np.zeros_like(y_test, dtype=float)
 y_null.fill(y_test.mean())
 np.sqrt(metrics.mean_squared_error(y_test, y_null))` == 649444.99460724776 (understandable due to large discrepancies between housing prices, that are in the million range)
 
 * The model is run again, this time with cross validation(number of folds = 10)
- * `from sklearn.cross_validation import cross_val_score
+  * `from sklearn.cross_validation import cross_val_score
 mse_scores = cross_val_score(lm, X, y, cv=10, scoring='neg_mean_squared_error')
 print ((-mse_scores).mean())`
 
