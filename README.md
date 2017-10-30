@@ -114,14 +114,14 @@ for col in ['acres','garage_capacity','tax_gross_amount','assessment_value_town'
 
 ## Simple Linear Regression
 * Firstly, I attempted to train the model on the testing dataset using train_test_split
-  * `X = df[['bedrooms_total', 'baths_total', 'acres', 'sq_ft_tot_fn',
-       'tax_gross_amount', 'assessment_value_town', 'garage_capacity',
-       'year_built', 'total_stories',
-       'rooms_total', 'garage',
-       'flood_zone',
-       'basement', 'price_closed', 'city__Pomfret', 'city__Woodstock',
-       'covenants__Unknown', 'covenants__Yes']]`
-  * `y = df['price_closed']`
+
+```python
+X = df[['bedrooms_total', 'baths_total', 'acres',    'sq_ft_tot_fn','tax_gross_amount', 'assessment_value_town', 'garage_capacity','year_built', 'total_stories',
+'rooms_total', 'garage','flood_zone','basement', 'price_closed', 'city__Pomfret', 'city__Woodstock',
+'covenants__Unknown', 'covenants__Yes']]
+y = df['price_closed']
+```
+
 * A simple linear regression model is intialized and trained
 
 ```python
@@ -147,7 +147,7 @@ df=pd.DataFrame(lm.coef_,X.columns,columns=['Coefficient'])
 * The accuracy of the model is then cross-evaluated with the null accuracy of the model itself
 
 ```python
-  y_null = np.zeros_like(y_test, dtype=float)
+y_null = np.zeros_like(y_test, dtype=float)
 y_null.fill(y_test.mean())
 np.sqrt(metrics.mean_squared_error(y_test, y_null))
 ```
