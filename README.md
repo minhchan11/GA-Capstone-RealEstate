@@ -63,12 +63,14 @@ which make up a sizable chunk of the real estate firm's business.
 * First, the dataframe is queried for null values using `df.isnull().sum().sort_values(ascending=False)`
 
 * Null values are then visualized using a heatmap `sns.heatmap(df.isnull(),yticklabels=False,cbar=False,cmap='viridis')`
+![Null values Count](./images/null.png)
 
 * Since the data sample is small, I have decided to drop columns that have null values more than 60% such as
   * common_land_acres
   * water_frontage_length
   * easements
   * water_body_type
+![Top missing values](./images/top_missing.png)
 
 * Thus, Dataframe is first munged using `df = df.drop(['common_land_acres','water_frontage_length','easements','water_body_type'],axis=1)`
 
@@ -88,8 +90,22 @@ which make up a sizable chunk of the real estate firm's business.
   * `covenants = pd.get_dummies(df.covenants,prefix='covenants_',drop_first=True)`
 
 ## Visualization: Exploratory Data Analysis
+* Methods such as `info()` and `describe` are called on the dataframe for analysis
+* A visualiztion of the closing price distribution is necessary to shape our methodology. It is normally distributed with a long tail
+ ![Closing Price](./images/closing_price.png)
+* We can also see a clear distinction between closing prices differe by number of bedrooms and bathrooms
+  ![Bedroom](./images/bedroom.png)
+  ![Bathroom](./images/bathroom.png)
+* Perhaps the bedroom price is also different based on the fact whether or not a property has a garage?
+  ![Bedroom by garage](./images/bedroom_garage.png)
 * A scatter matrix is created with Seaborn to visualize the relationship within all existing features:
  ![Scatter Matrix](./images/scatter.png)
+* Upon inspection, we can see some clear linear features. Re-visualize them with Seaborn and focus on the *'Closing Price'* row
+ ![Linear Features](./images/linear.png)
+ * We also take a look at the relationships that are not linear:
+  ![Non-Linear Features](./images/nonlinear.png)
+* A Seaborn heatmap is neccessary to show the correlation between features
+  ![Correlation Features](./images/correlation.png)
 
 ## Simple Linear Regression
 * Firstly, I attempted to train the model on the testing dataset using train_test_split
@@ -115,6 +131,8 @@ lm.fit(X_train,y_train)`
 * The coefficients value of each features are also generated for evaluation
  * `lm.coef_
 df=pd.DataFrame(lm.coef_,X.columns,columns=['Coefficient'])`
+
+![Coefficient Matrix](./images/coefficient.png)
 
 * The accuracy of the model is then cross-evaluated with the null accuracy of the model itself
  * `y_null = np.zeros_like(y_test, dtype=float)
