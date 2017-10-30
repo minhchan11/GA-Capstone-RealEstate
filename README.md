@@ -84,8 +84,12 @@ which make up a sizable chunk of the real estate firm's business.
  * `df['garage']= df['garage'].map({'No':0,'Yes':1})`
 
 * At this stage, some dummies column values are generated as part of exploratory feature engineering
+  * `city = pd.get_dummies(df.city,prefix='city_',drop_first=True)`
+  * `covenants = pd.get_dummies(df.covenants,prefix='covenants_',drop_first=True)`
 
 ## Visualization: Exploratory Data Analysis
+* A scatter matrix is created with Seaborn to visualize the relationship within all existing features:
+ ![Scatter Matrix](./images/scatter.png)
 
 ## Simple Linear Regression
 * Firstly, I attempted to train the model on the testing dataset using train_test_split
