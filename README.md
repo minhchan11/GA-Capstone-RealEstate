@@ -76,10 +76,12 @@ which make up a sizable chunk of the real estate firm's business.
 * Thus, Dataframe is first munged using `df = df.drop(['common_land_acres','water_frontage_length','easements','water_body_type'],axis=1)`
 
 * For some other columns, I have decided to fill in the missing values with the mean of those columns iteratively
- * ```python
- for col in ['acres','garage_capacity','tax_gross_amount','assessment_value_town']:
-    df[col] = df[col].fillna(df[col].mean())
-  ```
+
+
+```python
+for col in ['acres','garage_capacity','tax_gross_amount','assessment_value_town']:
+  df[col] = df[col].fillna(df[col].mean())
+```
 
 * For column that have only a few missing values, I use my best judgement to fill in values that could potentially help to create a reasonable values and will not affect the distribution. Mapping to a dictionary was used in some cases
    * `df['basement'] = df['basement'].fillna('No')`
@@ -121,8 +123,9 @@ which make up a sizable chunk of the real estate firm's business.
        'covenants__Unknown', 'covenants__Yes']]`
   * `y = df['price_closed']`
 * A simple linear regression model is intialized and trained
-  * ```python
-  X_train,X_test,y_train,y_test= train_test_split(X,y,test_size=0.2,random_state=101)
+
+```python
+X_train,X_test,y_train,y_test= train_test_split(X,y,test_size=0.2,random_state=101)
 from sklearn.linear_model import LinearRegression
 lm = LinearRegression()
 lm.fit(X_train,y_train)
@@ -134,15 +137,16 @@ lm.fit(X_train,y_train)
   * RMSE: 6.02205202677286e-10
 
 * The coefficients value of each features are also generated for evaluation
- * ```python
-lm.coef_
+
+```python
 df=pd.DataFrame(lm.coef_,X.columns,columns=['Coefficient'])
 ```
 
 ![Coefficient Matrix](./images/coefficient.png)
 
 * The accuracy of the model is then cross-evaluated with the null accuracy of the model itself
-  * ```python
+
+```python
   y_null = np.zeros_like(y_test, dtype=float)
 y_null.fill(y_test.mean())
 np.sqrt(metrics.mean_squared_error(y_test, y_null))
@@ -150,8 +154,9 @@ np.sqrt(metrics.mean_squared_error(y_test, y_null))
 == 649444.99460724776 (understandable due to large discrepancies between housing prices, that are in the million range)
 
 * The model is run again, this time with cross validation(number of folds = 10)
-  * ```python
-  from sklearn.cross_validation import cross_val_score
+
+```python
+from sklearn.cross_validation import cross_val_score
 mse_scores = cross_val_score(lm, X, y, cv=10, scoring='neg_mean_squared_error')
 print ((-mse_scores).mean())
 ```
