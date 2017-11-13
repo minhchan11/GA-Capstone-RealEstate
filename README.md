@@ -6,7 +6,7 @@ A local Vermont/New Hampshire real estate firm is looking into modeling closed p
 
 ## Hypothesis
 
-Is it possible to predict a closing price of a property in Vermont/New Hampshire with
+Is it possible to predict a closing price of a property in Vermont/New Hampshire with machine learning algorithm? If so, how accurate can it be?
 
 ## Data
 | Training Data       | Testing Data           | Validating Data  |
