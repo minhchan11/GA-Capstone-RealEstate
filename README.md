@@ -265,8 +265,9 @@ RMSE == 451590.943238. We need to improve this score!
     ![RFG](./images/rfg.png)
 
   * **Support Vector Regression(Linear)** is also chosen as a model. We can, however, see that there is a potential overfitting with low bias and high variance. It is evident from our visualization as well.
-  
+
   ![SVR](./images/svr.png)
+  
     * Stacking the estimators create a worse off result
 
   * **Prediction on test set**:
