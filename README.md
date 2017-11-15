@@ -214,6 +214,7 @@ RMSE == 451590.943238. We need to improve this score!
   scores = cross_val_score(lm, df_pca, y, cv=10, scoring='neg_mean_squared_error')
   np.mean(np.sqrt(-scores))
   ```
+  
     * Additionally, the correlation heatmap also indicates strong colinearity between PCA features, once again indicates to us that logistic models may not work too well on our transformed dataset.
     ![PCA](./images/pca.png)
 
