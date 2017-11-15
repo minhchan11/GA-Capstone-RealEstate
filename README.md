@@ -153,8 +153,7 @@ y_null = np.zeros_like(y_test, dtype=float)
 y_null.fill(y_test.mean())
 np.sqrt(metrics.mean_squared_error(y_test, y_null))
 ```
-Null Accura
-cy == 649444.99460724776 (understandable due to large discrepancies between housing prices, that are in the million range)
+Null Accuracy == 649444.99460724776 (understandable due to large discrepancies between housing prices, that are in the million range)
 
 * The model is run again, this time with cross validation(number of folds = 10)
 
