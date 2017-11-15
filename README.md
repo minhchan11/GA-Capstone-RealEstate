@@ -267,8 +267,8 @@ RMSE == 451590.943238. We need to improve this score!
   * **Support Vector Regression(Linear)** is also chosen as a model. We can, however, see that there is a potential overfitting with low bias and high variance. It is evident from our visualization as well.
 
   ![SVR](./images/svr.png)
-  
-    * Stacking the estimators create a worse off result
+
+  * Stacking the estimators create a worse off result
 
   * **Prediction on test set**:
     * Simple Linear Regression is best performer with `RMSE == 352325.48`, PCA did not perform as well as expected
