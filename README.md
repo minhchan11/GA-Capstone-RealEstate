@@ -119,7 +119,7 @@ for col in ['acres','garage_capacity','tax_gross_amount','assessment_value_town'
 
 ```python
 X = df[['bedrooms_total', 'baths_total', 'acres',    'sq_ft_tot_fn','tax_gross_amount', 'assessment_value_town', 'garage_capacity','year_built', 'total_stories',
-'rooms_total', 'garage','flood_zone','basement', 'price_closed', 'city__Pomfret', 'city__Woodstock',
+'rooms_total', 'garage','flood_zone','basement', 'city__Pomfret', 'city__Woodstock',
 'covenants__Unknown', 'covenants__Yes']]
 y = df['price_closed']
 ```
@@ -134,9 +134,9 @@ lm.fit(X_train,y_train)
 ```
 
 * Metrics such as mean absolute errors, mean squared errors and root mean squared errors are used to evaluate this first run:
-  * MAE: 314120.6155993199
-  * MSE: 262121390014.01596
-  * RMSE: 511977.9194594392
+  * `MAE: 314120.6155993199`
+  * `MSE: 262121390014.01596`
+  * `RMSE: 511977.9194594392`
 
 * The coefficients value of each features are also generated for evaluation
 
@@ -153,7 +153,7 @@ y_null = np.zeros_like(y_test, dtype=float)
 y_null.fill(y_test.mean())
 np.sqrt(metrics.mean_squared_error(y_test, y_null))
 ```
-Null Accuracy == 649444.99460724776 (understandable due to large discrepancies between housing prices, that are in the million range)
+Null Accuracy == 649444.99460724776
 
 * The model is run again, this time with cross validation(number of folds = 10)
 
@@ -261,9 +261,11 @@ RMSE == 451590.943238. We need to improve this score!
     np.mean(np.sqrt(-scores))
     ```
     * Although there is considerable improvement, RFR is prone to have overfitting issues as well as high variance. It might actually be worse off in predicting new data.
+
     ![RFG](./images/rfg.png)
 
   * **Support Vector Regression(Linear)** is also chosen as a model. We can, however, see that there is a potential overfitting with low bias and high variance. It is evident from our visualization as well.
+  
   ![SVR](./images/svr.png)
     * Stacking the estimators create a worse off result
 
@@ -273,7 +275,7 @@ RMSE == 451590.943238. We need to improve this score!
     * Support Vector Regression, although takes the longest to train, is worst performer with `RMSE == 763346.11`
     * Complexity of the models thus adversely affect its performance
 
-## Regularization
+## Regularization, Bias and Variance
   * Overfitting, as evident from our experiments, is a great issue. Largely due to our small datasets and many parameters relatively to the amount of data. Some of our estimators are overtuned on the training data and thus were not giving good prediction.
   * Since we cannot obtain more data, we want to have a decent bias-variance tradeoff. Regularization is an approach that involves imposing a penalty on complex models. We want the least complex models to capture all the information in our data.
   * The data suffers from multicollinearity ( independent variables are highly correlated).This is actually applicable because the numbers of bedrooms will highly correlate with numbers of rooms, areas, thus tax values, etc...
