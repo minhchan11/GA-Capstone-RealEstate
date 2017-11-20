@@ -27,7 +27,7 @@ interactions, heteroscedasticity, non-linearity and
 outlier data points can seriously hinder the performance
 of the hedonic price model in real estate valuations
 
-[**HOUSE PRICE PREDICTION: HEDONIC PRICE MODEL VS. ARTIFICIAL NEURAL NETWORK **](./reference/hedonic.pdf) _Visit Limsombunchai, Christopher Gan and Minsoo Lee_
+[**HOUSE PRICE PREDICTION: HEDONIC PRICE MODEL VS. ARTIFICIAL NEURAL NETWORK**](./reference/hedonic.pdf) _Visit Limsombunchai, Christopher Gan and Minsoo Lee_
 
 * According to sources above, some of the proven methods to real estate price predictions are hedonic pricing model, Artificial Neural Networks and Fuzzy Regression.
 * Challenges to model accuracy and performance include: Overfitting of trained data, heterogenous weights of all variables as well as multicollinearity and outlier data points.
