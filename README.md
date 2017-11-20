@@ -4,6 +4,36 @@
 
 A local Vermont/New Hampshire real estate firm is looking into modeling closed prices for houses. This dataset contains features of houses in three towns in Vermont, which make up a sizable chunk of the real estate firm's business.
 
+## Literature Review
+> Real estate price prediction demand models that are capable of accurately and efficiently predicting property values. Models such as Artificial Neural Networks (ANN), Adaptive Neuro-Fuzzy Inference Systems (ANFIS) and Fuzzy Least-Squares Regression (FLSR) are used. Simulation results show that FLSR provides a superior prediction function as compared to ANN and FIS in capturing the functional relationship between dependent and independent real estate variables and has the lowest computational complexity.
+
+[**APPLICATION OF FUZZY REGRESSION MODEL FOR REAL ESTATE PRICE PREDICTION**](./reference/FuzzyRegression.pdf)
+_Abdul Ghani Sarip, Muhammad Burhan Hafez and Md. Nasir Daud_
+
+> This process
+involves five steps: (a) apply the Best Subsets procedure to select the variables; (b)
+build linear regression models from the selected variables; (c) conduct diagnostics to
+find if the residual errors are normally distributed; (d) apply Box-Cox transformation
+to fix the non-Gaussian residual problem found in the diagnosis; and (e) restart the
+analysis to build the final model. This is a typical process of building regression
+models that may apply to many applications where predictive modeling is the goal.
+
+[**MULTIVARIATE REGRESSION MODELING FOR HOME VALUE ESTIMATES WITH EVALUATION USING MAXIMUM INFORMATION COEFFICIENT**](./reference/HuWangFeng.pdf) _Gongzhu Hu, Jinping Wang, and Wenying Feng_
+
+> Even though the hedonic price model has been
+widely recognized, issues such as model specification
+procedures, multicollinearity, independent variable
+interactions, heteroscedasticity, non-linearity and
+outlier data points can seriously hinder the performance
+of the hedonic price model in real estate valuations
+
+[**HOUSE PRICE PREDICTION: HEDONIC PRICE MODEL VS. ARTIFICIAL NEURAL NETWORK **](./reference/hedonic.pdf) _Visit Limsombunchai, Christopher Gan and Minsoo Lee_
+
+* According to sources above, some of the proven methods to real estate price predictions are hedonic pricing model, Artificial Neural Networks and Fuzzy Regression.
+* Challenges to model accuracy and performance include: Overfitting of trained data, heterogenous weights of all variables as well as multicollinearity and outlier data points.
+* In this project, I will attempt to build a predictive model by reducing factors into meaningful features that hold maximum information, while reducing the issue of overfitting and over-complex models.
+* Selecting features, simplifying coefficients and reducing noise are critical. Models should also be consistently retrained and reevaluated to study the different effects on accuracy.
+
 ## Hypothesis
 
 Is it possible to predict a closing price of a property in Vermont/New Hampshire with machine learning algorithm? If so, how accurate can it be?
@@ -344,9 +374,19 @@ RMSE == 451590.943238. We need to improve this score!
 * A lot of the listings do not have information available on the Internet
 
 ## Next step
+* Extra exploration: XGB, Artificial Neural Network with TensorFlow
+  * Does not perform as well as our less complex regression models.
+  * Perhaps to run it on simplified models or only most useful features, maximizing the functional relationship
+  * Fine tune learning rates
+* Improve models from Pickles, keep training.
 * Further feature engineering
 * Much more data is needed
 * Enhance model's performance by fine tuning stacking and ensemble
 * Explore boosting to reduce the overfitting issues of Random Forest Regressor, SVG, etc...
 * Explore PCA of only important features in Random Forest Regressor
 * Hyper parameter tuning for Elastic Net
+
+## Bibliography
+* Hu, G., Wang, J., & Feng, W. (2013). Multivariate Regression Modeling for Home Value Estimates with Evaluation Using Maximum Information Coefficient. _Studies in Computational Intelligence_, 69-81. doi:10.1007/978-3-642-32172-6_6
+* Limsombunc, V., Gan, C., & Lee, M. (2004). House Price Prediction: Hedonic Price Model vs. Artificial Neural Network. _American Journal of Applied Sciences, 1(3)_, 193-201. doi:10.3844/ajassp.2004.193.201
+* Sarip, A. G., Hafez, M. B., & Daud, M. N. (n.d.). Application Of Fuzzy Regression Model For Real Estate Price Prediction. _Malaysian Journal of Computer Science (ISSN 0127-9084), 29(1)_, 15-27. Retrieved from http://mjcs.fsktm.um.edu.my/detail.asp?AID=1588
